@@ -1,0 +1,24 @@
+apiVersion: mq.ibm.com/v1beta1
+kind: QueueManager
+metadata:
+  name: quickstart-leovidal-fromgit
+spec:
+  version: 9.2.0.1-r1-eus
+  license:
+    accept:  true 
+    license: L-RJON-BUVMQX
+    use: NonProduction
+  web:
+    enabled: true
+  queueManager:
+    name: "QUICKSTART"
+    storage:
+      queueManager:
+        type: ephemeral
+  template:
+    pod:
+      containers:
+       - name: qmgr
+         env:
+         - name: MQSNOAUT
+           value: "yes"
